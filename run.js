@@ -39,9 +39,3 @@ function runScript(scriptName) {
 
 runScript('perm');
 runScript('rej');
-runScript('claimowner');
-runScript('lockunlock');
-runScript('hideshow');
-runScript('wlbl');
-runScript('name');
-runScript('cowner');
