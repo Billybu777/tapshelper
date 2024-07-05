@@ -41,5 +41,11 @@ function runScript(scriptName) {
   });
 }
 
+runScript('claimowner');
+runScript('cowner');
+runScript('limit');
+runScript('lockunlock');
+runScript('name');
 runScript('perm');
 runScript('rej');
+runScript('wlbl');
