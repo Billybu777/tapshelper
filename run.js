@@ -1,19 +1,24 @@
-const express = require("express");
+const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 2000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.listen(PORT, () => {
-  console.log(`Script is running !`);
+  console.log(`Script is running!`);
 });
 
 app.get('/', (req, res) => {
-  res.send(`<body>
-  <center><h1>Script is running !</h1></center
-  </body>`);
+  res.send(`
+    <body>
+      <center><h1>Script is running!</h1></center>
+    </body>
+  `);
 });
 
 const { exec } = require('child_process');
-
 
 function runScript(scriptName) {
   const command = `node ${scriptName}.js`;
@@ -35,7 +40,6 @@ function runScript(scriptName) {
     console.error(`${scriptName} stderr: ${data}`);
   });
 }
-
 
 runScript('perm');
 runScript('rej');
