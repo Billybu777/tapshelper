@@ -1,24 +1,30 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const { config } = require('dotenv');
+
+config();
+
 const app = express();
 const PORT = process.env.PORT || 2000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.listen(PORT, () => {
-  console.log(`Script is running!`);
+  console.log(`Server is running on port ${PORT}`);
 });
 
 app.get('/', (req, res) => {
   res.send(`
-    <body>
-      <center><h1>Script is running!</h1></center>
-    </body>
+    <html>
+      <head>
+        <title>Bot Status</title>
+      </head>
+      <body style="text-align: center; padding: 20px;">
+        <h1>ON</h1>
+      </body>
+    </html>
   `);
 });
 
 const { exec } = require('child_process');
+
 
 function runScript(scriptName) {
   const command = `node ${scriptName}.js`;
@@ -41,11 +47,5 @@ function runScript(scriptName) {
   });
 }
 
-runScript('claimowner');
-runScript('cowner');
-runScript('limit');
-runScript('lockunlock');
-runScript('name');
 runScript('perm');
 runScript('rej');
-runScript('wlbl');
